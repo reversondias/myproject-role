@@ -1,0 +1,15 @@
+[Unit]
+Description=Gunicord with Project App
+After=nginx.service
+
+[Service]
+User=app_user
+Group+app_user
+Environment=$PATH
+WorkingDirectory=/Myproject
+Restart=on-failure
+ExecStart=/usr/bin/gunicorn --bind 0.0.0.0 wsgi
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,40 @@
+---
+- name: Copy requirements.txt
+  template:
+    src: requirements.j2
+    dest: /tmp/requirements.txt
+
+- name: Install requirements python app
+  pip:
+   requirements: /tmp/requirements.txt
+
+- name: Remove requirements.txt
+  file:
+   name: /tmp/requirements.txt
+   state: absent
+
+- name: Create app user
+  user:
+   name: app_user
+   comment: User to run app
+   shell: /sbin/nologin
+
+- name: Clone github Repo
+  git:
+   repo: https://github.com/reversondias/Myproject.git
+   dest: /
+   clone: yes
+
+- name: Service unit file of Project App
+  template:
+   scr: gunicorn.j2
+   dest: /etc/systemd/system/guicorn.service
+   owner: root
+   group: root
+   mode: 0644
+
+- name: Enable and Start Flask service
+  systemd:
+   name: gunicron
+   enabled: yes
+   state: started
