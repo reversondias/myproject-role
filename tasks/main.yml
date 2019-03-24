@@ -5,5 +5,6 @@
    name: epel-release
    state: latest
 
-- include_tasks: packages.yml
-- include_tasks: config_db.yml
+#- include_tasks: packages.yml
+#- include_tasks: config_db.yml
+- include_tasks: deploy_app.yml

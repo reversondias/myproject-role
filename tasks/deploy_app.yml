@@ -21,7 +21,7 @@
 
 - name: Clone github Repo
   git:
-   repo: https://github.com/reversondias/Myproject.git
+   repo: git@github.com:reversondias/Myproject.git
    dest: /
    clone: yes
 
