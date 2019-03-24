@@ -11,13 +11,6 @@
    host_all: yes
    state: absent
 
-- name: Set root password for DB
-  mysql_user:
-   name: root
-   password: "{{ mariadb_root_password }}"
-   host: localhost
-   state: present
-
 - name: Create database's project
   mysql_db:
    name: project
@@ -29,3 +22,11 @@
    password: "{{ bd_user_pass }}"
    priv: 'project.*:ALL'
    state: present
+
+- name: Set root password for DB
+  mysql_user:
+   name: root
+   password: "{{ mariadb_root_password }}"
+   host: localhost
+   state: present
+
