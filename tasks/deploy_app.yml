@@ -22,19 +22,20 @@
 - name: Clone github Repo
   git:
    repo: git@github.com:reversondias/Myproject.git
-   dest: /
+   dest: /Myproject
+   key_file: /root/.ssh/id_rsa
    clone: yes
 
 - name: Service unit file of Project App
   template:
-   scr: gunicorn.j2
-   dest: /etc/systemd/system/guicorn.service
+   src: gunicorn.j2
+   dest: /etc/systemd/system/gunicorn.service
    owner: root
    group: root
    mode: 0644
 
-- name: Enable and Start Flask service
+- name: Enable and Start Gunicorn service
   systemd:
-   name: gunicron
+   name: gunicorn
    enabled: yes
    state: started

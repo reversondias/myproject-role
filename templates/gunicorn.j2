@@ -4,7 +4,7 @@ After=nginx.service
 
 [Service]
 User=app_user
-Group+app_user
+Group=app_user
 Environment=$PATH
 WorkingDirectory=/Myproject
 Restart=on-failure
