@@ -1,4 +1,9 @@
 ---
 # tasks file for meyproject-role
+- name: Enable Epel repository
+  yum:
+   name: epel-release
+   state: latest
+
 - include_tasks: packages.yml
 - include_tasks: config_db.yml
