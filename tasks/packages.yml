@@ -1,7 +1,8 @@
 ---
-- name: Install package
+- name: Install requirements packages
   yum: 
    name: "{{ packages }}"
    state: latest
+  tags: packages
  
  

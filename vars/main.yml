@@ -10,4 +10,7 @@ packages:
 
 mariadb_root_password: projectdbroot2019
 
-bd_user_pass: projectdb2019
+db_user: user_project
+db_user_pass: projectdb2019
+
+db_name: project

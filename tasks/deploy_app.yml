@@ -1,41 +1,37 @@
 ---
-- name: Copy requirements.txt
-  template:
-    src: requirements.j2
-    dest: /tmp/requirements.txt
-
-- name: Install requirements python app
-  pip:
-   requirements: /tmp/requirements.txt
-
-- name: Remove requirements.txt
-  file:
-   name: /tmp/requirements.txt
-   state: absent
-
 - name: Create app user
   user:
    name: app_user
    comment: User to run app
    shell: /sbin/nologin
+  tags: deploy_app
 
 - name: Clone github Repo
   git:
    repo: git@github.com:reversondias/Myproject.git
    dest: /Myproject
+   accept_hostkey: yes
    key_file: /root/.ssh/id_rsa
    clone: yes
+  tags: deploy_app
 
-- name: Service unit file of Project App
+- name: Install requirements python app
+  pip:
+   requirements: /Myproject/requirements.txt
+  tags: deploy_app
+
+- name: Copy ervice unit file of Project App
   template:
    src: gunicorn.j2
    dest: /etc/systemd/system/gunicorn.service
    owner: root
    group: root
    mode: 0644
+  tags: deploy_app
 
 - name: Enable and Start Gunicorn service
   systemd:
    name: gunicorn
    enabled: yes
    state: started
+  tags: deploy_app

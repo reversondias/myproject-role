@@ -4,24 +4,28 @@
    name: mariadb
    enabled: yes
    state: started
+  tags: database
 
 - name: Remove all anonymous users
   mysql_user:
    name: ''
    host_all: yes
    state: absent
+  tags: database
 
 - name: Create database's project
   mysql_db:
-   name: project
+   name: "{{ db_name }}"
    state: present
+  tags: database
 
 - name: Create a user for project and grant permission
   mysql_user:
-   name: user_project
-   password: "{{ bd_user_pass }}"
-   priv: 'project.*:ALL'
+   name: "{{ db_user }}"
+   password: "{{ db_user_pass }}"
+   priv: '{{ db_name }}.*:ALL'
    state: present
+  tags: database
 
 - name: Set root password for DB
   mysql_user:
@@ -29,4 +33,5 @@
    password: "{{ mariadb_root_password }}"
    host: localhost
    state: present
+  tags: database
 
