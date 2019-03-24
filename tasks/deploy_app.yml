@@ -20,6 +20,11 @@
    requirements: /Myproject/requirements.txt
   tags: deploy_app
 
+- name: Reconfigure de db.conf of App
+  template:
+   src: db.conf.j2
+   dest: /Myproject/conf/db.conf
+
 - name: Copy ervice unit file of Project App
   template:
    src: gunicorn.j2
