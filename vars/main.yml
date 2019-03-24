@@ -1,0 +1,13 @@
+---
+# vars file for meyproject-role
+packages:
+  - mariadb-server
+  - python2-pip
+  - git
+  - MySQL-python
+  - mariadb-libs
+  - nginx
+
+mariadb_root_password: projectdbroot2019
+
+bd_user_pass: projectdb2019
