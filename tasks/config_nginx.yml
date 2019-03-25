@@ -21,3 +21,9 @@
    enabled: yes
    state: started
   tags: nginx
+
+- name: Set httpd_can_network_connect flag on, to allow http connections
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
