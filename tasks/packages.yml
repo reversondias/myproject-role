@@ -1,7 +1,7 @@
 ---
 - name: Install epel repository
   yum:
-   name: yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
+   name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
    state: present
 
 - name: Install requirements packages
