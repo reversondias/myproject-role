@@ -1,7 +1,6 @@
 ---
 # vars file for meyproject-role
 packages:
-  - mariadb-server
   - python2-pip
   - git
   - MySQL-python
@@ -14,3 +13,5 @@ db_user: user_project
 db_user_pass: projectdb2019
 
 db_name: project
+
+db_server: localhost

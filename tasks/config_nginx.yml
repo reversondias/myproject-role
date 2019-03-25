@@ -1,29 +1,30 @@
 ---
 - name: Make Self-Signed certificate to sginx
   shell: 'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/nginx-selfsigned.key -out /etc/pki/tls/certs/nginx-selfsigned.crt -subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=project/OU=TI/CN=myproject.com"'
-  tags: nginx
+  tags: nginx, deploy_app
 
 - name: Remove nginx.conf default
   file:
    name: /etc/nginx/nginx.conf
    state: absent
-  tags: nginx
+  tags: nginx, deploy_app
 
 - name: Copy a customized nginx.conf file
   template:
    src: nginx.j2
    dest: /etc/nginx/nginx.conf
-  tags: nginx
+  tags: nginx, deploy_app
 
 - name: Enable and start nginx service
   systemd:
    name: nginx
    enabled: yes
    state: started
-  tags: nginx
+  tags: nginx, deploy_app
 
 - name: Set httpd_can_network_connect flag on, to allow http connections
   seboolean:
     name: httpd_can_network_connect
     state: yes
     persistent: yes
+  tags: nginx, deploy_app

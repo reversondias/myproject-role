@@ -1,0 +1,4 @@
+- name: Deploy Project App
+  hosts: app
+  roles:
+   - myproject-role
