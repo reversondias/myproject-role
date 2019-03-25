@@ -1,6 +1,6 @@
 - name: Deploy Project App
-  hosts: localhost
+  hosts: app
   vars:
-   db_user_pass: reverson
+   db_user_pass: pass_db_user
   roles:
    - myproject-role

@@ -9,7 +9,10 @@ Role Variables
 
 There are variable on vars/main.yml:  
 
+This variable is difined in vars/main.yml and is not possible overrid  
 packages -> The requirements packges to run the app  
+
+These variables can be overrid if necessary by playbook. The follow there is a exemple.  
 mariadb_root_password -> DB root password  
 db_user -> User to connect on the data base application  
 db_user_pass -> User password  
@@ -23,9 +26,13 @@ Example Playbook
 
      - name: Deploy Project App
        hosts: app
+       vars:
+         db_user: user
+         db_user_pass: pass
        roles:
         - myproject-role
 
+The same example is in a folder playbooks on de root of repository.
 
 Description
 -----------
