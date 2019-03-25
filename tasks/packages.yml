@@ -1,4 +1,9 @@
 ---
+- name: Install epel repository
+  yum:
+   name: yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
+   state: present
+
 - name: Install requirements packages
   yum: 
    name: "{{ packages }}"
