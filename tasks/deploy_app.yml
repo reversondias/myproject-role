@@ -8,10 +8,8 @@
 
 - name: Clone github Repo
   git:
-   repo: git@github.com:reversondias/Myproject.git
+   repo: https://github.com/reversondias/Myproject.git
    dest: /Myproject
-   accept_hostkey: yes
-   key_file: /root/.ssh/id_rsa
    clone: yes
   tags: deploy_app
 

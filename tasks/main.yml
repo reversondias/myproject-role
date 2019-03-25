@@ -1,7 +1,7 @@
 ---
 # tasks file for meyproject-role
 
-- include_tasks: packages.yml
-- include_tasks: config_db.yml
+#- include_tasks: packages.yml
+#- include_tasks: config_db.yml
 - include_tasks: deploy_app.yml
-- include_tasks: config_nginx.yml
+#- include_tasks: config_nginx.yml
